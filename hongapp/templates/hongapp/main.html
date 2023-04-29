@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstr
+ap/3.4.1/css/bootstrap.min.css">
+
+<body style='margin:30px;'>
+    <style>
+        a {
+            font-size: 0.9em;
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+    <table border="1" class='table table-striped'>
+        <tr>
+            <td>순번</td>
+            <td>이름</td>
+            <td>주소</td>
+        </tr>
+        {% for a in hong %}
+        <tr>
+            <td>{{ a.id }}</td>
+            <td>{{ a.name }}</td>
+            <td>{{ a.adress }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <div style='text-align:center;'>
+        <ul class='pagination'>
+            {% if page > 10 %}
+            <li>
+                <a href="/hong/main/?page={{page|add:'-10'}}">이전</a>
+            </li>
+            {% endif %}
+            {%for p in pages%}
+            <li>
+                {% if p == page %}
+                <span style="color: red;">{{ p }}</span>
+                {% else %}
+                <a href="/hong/main/?page={{ p }}">
+                    {{ p }}
+                </a>
+                {% endif %}
+            </li>
+            {%endfor%}
+            <li>
+                <a href="/hong/main/?page={{page|add:'10'}}">다음</a>
+            </li>
+            <!-- (page+10)-(page%10)+1 -->
+        </ul>
+    </div>
+</body>

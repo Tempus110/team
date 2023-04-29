@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from sleepapp import views
+from hongapp import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("sleep/", include("sleepapp.urls")),
+    path("hong/", include("hongapp.urls")),
+    #path("", views.main),
     
 ]

@@ -1,51 +1,104 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstr
-ap/3.4.1/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="ko">
 
-<body style='margin:30px;'>
-    <style>
-        a {
-            font-size: 0.9em;
-            text-decoration: none;
-            color: blue;
-        }
-    </style>
-    <table border="1" class='table table-striped'>
-        <tr>
-            <td>순번</td>
-            <td>이름</td>
-            <td>주소</td>
-        </tr>
-        {% for a in hong %}
-        <tr>
-            <td>{{ a.id }}</td>
-            <td>{{ a.name }}</td>
-            <td>{{ a.adress }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-    <div style='text-align:center;'>
-        <ul class='pagination'>
-            {% if page > 10 %}
-            <li>
-                <a href="/hong/main/?page={{page|add:'-10'}}">이전</a>
-            </li>
-            {% endif %}
-            {%for p in pages%}
-            <li>
-                {% if p == page %}
-                <span style="color: red;">{{ p }}</span>
-                {% else %}
-                <a href="/hong/main/?page={{ p }}">
-                    {{ p }}
-                </a>
-                {% endif %}
-            </li>
-            {%endfor%}
-            <li>
-                <a href="/hong/main/?page={{page|add:'10'}}">다음</a>
-            </li>
-            <!-- (page+10)-(page%10)+1 -->
-        </ul>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <title>honghong</title>
+  <link href="/static/css/reset.css" rel="stylesheet">
+  <link href="/static/css/main.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.3/css/all.css" rel="stylesheet">
+  <title>HTML 룰렛</title>
+</head>
+<body>
+  <div id="wrap">
+    <header id="header">
+      <div id="headerIn">
+        <h1 class="logo"><a href="#"><img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAGMLMSg-yIZLIT-DftuyCKZdDhoBTrgnHHw&usqp=CAU"
+              alt="홍홍"></a></h1>
+        <div>
+          <a href="#" class="srcimg"><img src="img/hongik.png"></a>
+          <a href="pcjoin.html">회원가입
+          </a>
+          <a>|</a>
+          <a href="pclogin.html">로그인</a>
+          <a>|</a>
+          <a href="lostidpw.html">ID/PW찾기</a>
+        </div>
+        <!--.logo-->
+        <div class="search">
+          <input type="text" class="src"><label>검색하기</label>
+          <!--.search-->
+        </div>
+        <!--#headerIn-->
+    </header>
+    <!--#header-->
+    <nav id="lnb">
+      <ul class="cf">
+        <li><a href="#">전체</a></li>
+        <li><a href="#">리뷰</a></li>
+        <li><a href="#">홍대 인근</a></li>
+        <li><a href="#">조치원역</a></li>
+        <li><a href="#">그 외</a></li>
+      </ul>
+      <div
+        style="width: 425px; height: 350px; background-color: #fff83b; float: left; font-size: large; text-align: center; font-family: 'Montserrat', sans-serif; line-height: 2em;">
+        <a href="#" class="memo"><img src="static/sticky-note.png"></a>
+        학식
+        <!-- 내용 입력 -->
+      </div>
+      <div
+        style="width:425px; height: 350px; background-color:  #28bcc1; float: right; font-size: large; text-align: center; font-family: 'Montserrat', sans-serif; line-height: 2em;">
+        배달팟
+        <a href="#" class="memo"><img src="static/delivery-man.png"></a>
+
+        <!-- 내용 입력 -->
+      </div>
+  </div>
+  </nav>
+  <!--.lnb-->
+  <!--#홍익대,조치원역, 그외-->
+  <div class="roulette">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+
+  </div>
+  <button onclick="spin()">SPIN</button>
+  <!-- HTML code -->
+  <div id="roulette">
+    <!-- put your roulette content here -->
+  </div>
+
+  <!-- JavaScript code -->
+  <script>
+    function spin() {
+      const roulette = document.getElementById("roulette");
+      const deg = Math.floor(Math.random() * 360) + 1080; // random angle between 1080 and 1440 degrees
+      roulette.style.transform = `rotate(${deg}deg)`;
+    }
+  </script>
+
+  <footer id="footer">
+    <p class="copy">COPYRIGHT (C) <span>MNTALK.</span> ALL RIGHTS RESERVED</p>
+    <ul class="fmenu cf">
+      <li><a href="userag.html">이용약관</a><span>|</span></li>
+      <li><a href="privacy.html"><u>개인정보 처리방침</u></a><span>|</span></li>
+      <li><a href="adsform.html">광고문의</a></li>
+    </ul>
+  </footer>
+  <!--#footer-->
+  </div>
+  <!--#wrap-->
+
+
 </body>
+
+</html>

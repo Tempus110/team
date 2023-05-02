@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstr
+ap/3.4.1/css/bootstrap.min.css">
+
+<head>
+    <style>
+        .text {
+            margin: 0 auto;
+        }
+
+        a {
+            font-size: 0.9em;
+            text-decoration: none;
+            color: blue;
+        }
+
+        td.id {
+            width: 5px;
+        }
+        td.name {
+            width: 50px;
+        }
+        td.address {
+            width: 150px;
+        }
+    </style>
+    
+</head>
+
+<body style='margin:30px;'>
+    <div >
+        <div class="text">
+            <table border="1" class='table table-striped' width="200" cellpadding="5" cellspacing="2" border="1" align="center" style="table-layout:fixed; word-break:break-all;">
+                <tr>
+                    <td class='id'>순번</td>
+                    <td class="name">이름</td>
+                    <td class="address">주소</td>
+                </tr>
+                {% for a in hong %}
+                <tr>
+                    <td>{{ a.id }}</td>
+                    <td>{{ a.name }}</td>
+                    <td>{{ a.address }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+            <!-- <p>위도: {{ x }}</p>
+            <p>경도: {{ y }}</p> -->
+
+            <div style='text-align:center;'>
+                <ul class='pagination'>
+                    {% if page > 10 %}
+                    <li>
+                        <a href="/hong/total/?page={{page|add:'-10'}}">이전</a>
+                    </li>
+                    {% endif %}
+                    {%for p in pages%}
+                    <li>
+                        {% if p == page %}
+                        <span style="color: red;">{{ p }}</span>
+                        {% else %}
+                        <a href="/hong/total/?page={{ p }}">
+                            {{ p }}
+                        </a>
+                        {% endif %}
+                    </li>
+                    {%endfor%}
+                    <li>
+                        <a href="/hong/total/?page={{page|add:'10'}}">다음</a>
+                    </li>
+                    <!-- (page+10)-(page%10)+1 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
